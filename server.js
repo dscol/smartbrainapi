@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import knex from 'knex';
-import bcrypt from 'bcrypt-nodejs';
+import bcrypt from 'bcrypt';
 import handleRegister from './controllers/register.js';
 import handleSignIn from './controllers/signin.js';
 import handleProfileGet from './controllers/profile.js';
@@ -10,8 +10,8 @@ import image from './controllers/image.js';
 const db = knex({
     client: 'pg',
     connection: {
-        connectionString: process.env.DATABASE_URL,
-        ssl: true,
+        host: '127.0.0.1',
+        database: 'smartbrain',
     }
 });
 
