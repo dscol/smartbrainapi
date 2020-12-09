@@ -22,7 +22,7 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.send('its working');
+    res.send(`running on ${process.env.PORT}`);
 });
 
 app.post('/signin', (req, res) => handleSignIn(req, res, bcrypt, db));
