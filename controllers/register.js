@@ -1,5 +1,4 @@
-const handleRegister = (req, res, bcrypt, db) => {
-    const saltRounds = 10;
+const handleRegister = (req, res, bcrypt, saltRounds, db) => {
     const { name, email, password } = req.body;
     const hash = bcrypt.hashSync(password, saltRounds);
     
@@ -24,7 +23,6 @@ const handleRegister = (req, res, bcrypt, db) => {
             .then(user => {
               res.json(user[0]);
             })
-            .catch(err => res.json('cannot enter user'))
         })
         .then(trx.commit)
         .catch(trx.rollback)

@@ -7,6 +7,7 @@ import handleSignIn from './controllers/signin.js';
 import handleProfileGet from './controllers/profile.js';
 import image from './controllers/image.js';
 
+const saltRounds = 10;
 const db = knex({
     client: 'pg',
     connection: {
@@ -26,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/signin', (req, res) => handleSignIn(req, res, bcrypt, db));
-app.post('/register', (req, res) => handleRegister(req, res, bcrypt, db));
+app.post('/register', (req, res) => handleRegister(req, res, bcrypt, saltRounds, db));
 app.get('/profile/:id', (req, res) => handleProfileGet(req, res, db));
 app.put('/image', (req, res) => image.handleImage(req, res, db));
 app.post('/imageurl', (req, res) => image.handleApiCall(req, res));
