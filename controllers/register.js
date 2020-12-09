@@ -24,6 +24,7 @@ const handleRegister = (req, res, bcrypt, db) => {
             .then(user => {
               res.json(user[0]);
             })
+            .catch(err => res.json('cannot enter user'))
         })
         .then(trx.commit)
         .catch(trx.rollback)
