@@ -10,8 +10,8 @@ import image from './controllers/image.js';
 const db = knex({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        database: 'smartbrain',
+        conncectionString: process.env.DATABASE_URL,
+        ssl: true,
     }
 });
 
